@@ -14,7 +14,7 @@ __version__ = 0.10
 # GLOBAL VARIABLES.
 
 # Bot owner, replace with your user_id.
-owner = 59802458
+owner = 923828395
 
 # Variable to hold all Triggers.
 triggers = {}
@@ -292,17 +292,17 @@ def size(m):
             bot.reply_to(m, 'Size of Triggers List = 0')
 
 
-@bot.message_handler(commands=['all'])
+@bot.message_handler(commands=['all','list'])
 def all_triggers(m):
     if(m.chat.type in ['group', 'supergroup']):
         trg = get_triggers(m.chat.id)
         if(trg):
             if(len(trg.keys()) == 0):
-                bot.reply_to(m, 'This group doesn\'t have triggers.')
+                bot.send_message(m.chat.id, 'This group doesn\'t have triggers.')
             else:
-                bot.reply_to(m, 'Triggers:\n' + '\n'.join(trg))
+                bot.send_message(m.chat.id, 'Triggers:\n' + '\n'.join(trg))
         else:
-            bot.reply_to(m, 'This group doesn\'t have triggers.')
+            bot.send_message(m.chat.id, 'This group doesn\'t have triggers.')
 
 
 @bot.message_handler(commands=['help', 'start'])
@@ -536,8 +536,10 @@ def response(m):
         trg = get_triggers(m.chat.id)
         if(trg):
             for t in trg.keys():
-                if t in m.text.lower():
-                    bot.reply_to(m, trg[t])
+                #if t in m.text.lower():
+                if t == m.text.lower():
+#                    bot.reply_to(m, trg[t])
+                    bot.send_message(m.chat.id, trg[t])
 
 
 # This makes the bot unstoppable :^)
