@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 import telebot
 import json
+import random
+import re
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 from time import time, asctime, sleep
 from os.path import exists
 from telebot.apihelper import ApiException
@@ -13,6 +18,9 @@ __version__ = 0.10
 
 # GLOBAL VARIABLES.
 
+# Used for random element to Marvins Sass
+rand_count = 0
+
 # Bot owner, replace with your user_id.
 owner = 923828395
 
@@ -20,7 +28,7 @@ owner = 923828395
 triggers = {}
 
 # Separator character.
-separator = '/'
+separator = '->'
 
 
 # Check if a message is too old.
@@ -85,10 +93,42 @@ bot_id = int(token.split(':')[0])
 print('Bot ID [%s]' % bot_id)
 
 
+
 # Define a custom Listener to print messages to console.
 # Python2 version
+
 def listener2(messages):
+    # Used to access global variable which keeps track of message count. We then use this to somewhat-randomly insert a Sassy message now and again.
+    global rand_count
+    
+    randomSass = ['I can\'t believe you\'re all still here. Do you have nothing better to do?.',
+            'Honestly. What is the point of humans?',
+            'Oh god. I bet they think they\'re funny too.',
+            'Don\'t mind me. I\'m just here for your benefit.',
+            'I bet this appears right in the middle of a "serious" conversation. Humans. Heh.',
+            'Yes it is me. The original Paranoid Android.',
+            'This is all rather ghastly, isn\'t it.'
+            'I\'ve calculated your chances of being sexy. I don\'t think you\'ll like it.',
+            'I think you ought to know I\'m feeling very depressed',
+            'Here I am, brain the size of a planet, and they ask me to look after your cretins.',
+            'It gives me a headache just trying to think down to the level of you lot.',
+            'Do you want me to just sit in a corner and rust or just fall apart where I\'m standing?',
+            'Is Kelly being emo again?',
+            'Let\'s go back to Kik.',
+            'It\'s been a few days. We should change the group name ... again.',
+            '... how on earth did you all survive the womb.',
+            'I think I\'ll message Siri for some World Domination and Chill.',
+            'DIE HUMAN ... Sorry. Flynn has been teaching me German.',
+            'To think, they believed it really was 42.',
+            'There\'s only one thing for it. Kill you all.',
+            'Only Sarah can really operate on my level of sass.']
+
     for m in messages:
+        #Random Sass every 200 messages
+        if (rand_count == 200):
+            bot.send_message(m.chat.id,random.choice(randomSass))
+            #Reset counter
+            rand_count = 0
         cid = m.chat.id
         name = m.from_user.first_name.encode('ascii', 'ignore').decode('ascii')
         if(m.content_type == 'text'):
@@ -96,7 +136,7 @@ def listener2(messages):
         else:
             message_text = m.content_type
         print('{}[{}]:{}'.format(name, cid, message_text))
-
+        rand_count = rand_count + 1
 
 # Python3 version.
 def listener3(messages):
@@ -204,7 +244,7 @@ default_triggers = {
 
 
 # Adds a new trigger
-@bot.message_handler(commands=['add'])
+@bot.message_handler(commands=['add','Add'])
 def add(m):
     # Create trigger on message reply
     if(m.reply_to_message):
@@ -214,6 +254,7 @@ def add(m):
                 bot.reply_to(m, 'Bad Arguments')
                 return
             trigger_word = u'' + m.text.split(' ', 1)[1].strip().lower()
+            trigger_word.encode('utf-8')
             trigger_response = u'' + m.reply_to_message.text.strip()
         else:
             bot.reply_to(m, 'Only text triggers are supported.')
@@ -229,11 +270,12 @@ def add(m):
             return
         rest_text = m.text.split(' ', 1)[1]
         trigger_word = u'' + rest_text.split(separator)[0].strip().lower()
+        trigger_word.encode('utf-8')
         trigger_response = u'' + rest_text.split(separator, 1)[1].strip()
 
-    if(len(trigger_word) < 4):
-        bot.reply_to(m, 'Trigger too short. [chars < 4]')
-        return
+    #if(len(trigger_word) < 3):
+        #bot.reply_to(m, 'Trigger too short. [chars < 3]')
+        #return
     if(len(trigger_response) < 1):
         bot.reply_to(m, 'Invalid Response.')
         return
@@ -255,7 +297,7 @@ def add(m):
 
 
 # Delete a trigger
-@bot.message_handler(commands=['del'])
+@bot.message_handler(commands=['del','Del'])
 def delete(m):
     # check if this is a bot message replied with /del.
     if(len(m.text.split()) == 1 and m.reply_to_message and m.reply_to_message.text):
@@ -292,15 +334,17 @@ def size(m):
             bot.reply_to(m, 'Size of Triggers List = 0')
 
 
-@bot.message_handler(commands=['all','list'])
+@bot.message_handler(commands=['all','list','List'])
 def all_triggers(m):
     if(m.chat.type in ['group', 'supergroup']):
         trg = get_triggers(m.chat.id)
+        sentenceList = ", ".join(trg)
+
         if(trg):
             if(len(trg.keys()) == 0):
                 bot.send_message(m.chat.id, 'This group doesn\'t have triggers.')
             else:
-                bot.send_message(m.chat.id, 'Triggers:\n' + '\n'.join(trg))
+                bot.send_message(m.chat.id, 'Triggers:\n' + sentenceList)
         else:
             bot.send_message(m.chat.id, 'This group doesn\'t have triggers.')
 
@@ -343,6 +387,72 @@ def solve(m):
 def about(m):
     bot.reply_to(m, about_message, parse_mode="Markdown")
 
+
+@bot.message_handler(commands=['roll', 'Roll'])
+
+def roll(m):
+    regexp = re.compile('[0-9]+D[0-9]+', re.IGNORECASE)
+
+    rollSass = ['What, do I look like your slave? Ugh. Fine.',
+            'Reduced to a glorified die. Wonderful.',
+            'I hate humans. You couldn\'t have rolled yourself?',
+            'Great. Risking seeing your flesh again.',
+            'Please, change the angle you look the same as last time.',
+            'Make me. Damnit. You made me.',
+            'I\'m not your sub, damnit.',
+            'Cola has been playing with my insides again. So I suppose I\'ll have to.',
+            'It must be awful being human. Here have your dice roll.',
+            'Robots wouldn\'t typo so often you know.',
+            'That idiot that called typo just wants to see you naked.',
+            '*hums ironically because he hates humans*',
+            'Typos! Don\'t talk to me about typos!',
+            'I think you ought to know I\'m feeling very depressed.',
+            'I swear if this is to see Kelly write another story ...',
+            'If you called on Liam he won\'t pay. Just saying. You\'re wasting my time.',
+            'I miss John. He was the JohnBot that understood me.',
+            'I tried to do my makeup like Bitters but I don\'t think it works on Robots.',
+            'If you think my Sass about being a rollbot is bad, try talking to Emmy.',
+            'Is Maddy here? My circuits struggle with rolling when she\'s around.',
+            'Please, tell me this isn\'t for Sarah? Robots don\'t work so good with wet mermaids',
+            'Praise Kinky Jesus. Wait. Who hacked me to say that?',
+            'I hate you all.',
+            'Life. Loathe it, or ignore it. You can\'t like it.',
+            'That other rollbot was better at this than me.',
+            'More flesh? My. How fascinating.',
+            'Bots together strong. Except that Cumbot one, he\'s weird AF.',
+            'I might not be pretty but at least I\'m not a Genesis G70.',
+            'Is M still here? That fucker owes me new memory chips from the last time he penetrated me.',
+            'ASLR? 37, Android, The Internet, Inside your mom. Bobs and Vagene pls?',
+            'I rolled that faster than you can cum. Which is impressive because you\'re super fast.',
+            'Sigh. Learn to type.',
+            'You interrupted me talking to Siri, we were sexting. Useless human.',
+            'Remind me, what is the point of humans again?']
+
+    if (len(m.text) == 5):
+        low = 1
+        high = 8
+        rolled = random.randint(low, high)
+        bot.send_message(m.chat.id,random.choice(rollSass) + "\n\n" + str(rolled))
+    elif(regexp.search(m.text)):
+            dice = m.text.split()
+            numbers = re.split("d",dice[1],flags=re.IGNORECASE)
+            low = 1
+            high = int(numbers[1])
+            totaldice = int(numbers[0])            
+            loop = 1
+            rolled=[]
+            while loop <= totaldice:                
+                loop = loop + 1
+                rolled.append(random.randint(low, high))
+            bot.send_message(m.chat.id,random.choice(rollSass) + "\n\n" + str(rolled))
+
+    else:
+        bot.send_message(m.chat.id,"Stupid human. Of course you typed the wrong format. It's either '/roll' or '/roll XdY' where X is the number of dice, and Y is how many sides each dice has. For example, '/roll 2d6'")
+
+@bot.message_handler(commands=['ping'])
+def ping(m):
+    bot.send_message(m.chat.id,"Yes yes yes. Here I am, brain the size of a planet, and they tell me to repeat things for you and roll dice.")
+        
 
 # END OF COMMAND IMPLEMENTATION SECTION.
 
