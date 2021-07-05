@@ -504,7 +504,7 @@ def activityLog(m):
             for member in act:
                 memberName = act.keys()
                 memberTime = act.values()
-                FullList = memberName + " : " + memberTime
+                FullList = str(memberName) + " : " + str(memberTime)
                 print(FullList)
 
     else:
