@@ -155,7 +155,7 @@ def listener2(messages):
         
         rand_count = rand_count + 1
 
-        # Catch some chat values for logging 
+        # Catch some chat values for logging
         cid = m.chat.id
         name = m.from_user.first_name.encode('ascii', 'ignore').decode('ascii')
         if(m.content_type == 'text'):
@@ -491,8 +491,8 @@ def ping(m):
     bot.send_message(m.chat.id,"Yes yes yes. Here I am, brain the size of a planet, and they tell me to repeat things for you and roll dice.")
 
 @bot.message_handler(commands=['activity', 'Activity'])
+
 def activity(m):
-    print('do nothing')
 
 
 
