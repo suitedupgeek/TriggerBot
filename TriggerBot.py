@@ -153,7 +153,7 @@ def listener2(messages):
         else:
             message_text = m.content_type
         
-        time = datetime.now()
+        time = datetime.datetime.now()
         print('{}:{}[{}]:{}'.format(time,name, cid, message_text))
         rand_count = rand_count + 1
 
