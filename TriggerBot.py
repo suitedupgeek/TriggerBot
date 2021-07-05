@@ -77,7 +77,7 @@ else:
 def save_activity():
     with open('activity.json', 'w') as e:
         json.dump(activity, e, indent=2)
-    print('Activity file saved.')
+
 
 # Function to get triggers list for a group.
 def get_activity(group_id):
