@@ -152,7 +152,9 @@ def listener2(messages):
             message_text = m.text.encode('ascii', 'ignore').decode('ascii')
         else:
             message_text = m.content_type
-        print('{}:{}[{}]:{}'.format(datetime.now(),name, cid, message_text))
+        
+        time = datetime.now()
+        print('{}:{}[{}]:{}'.format(time,name, cid, message_text))
         rand_count = rand_count + 1
 
 # Python3 version.
