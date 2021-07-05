@@ -499,9 +499,10 @@ def activityLog(m):
         else:
             
             listIndex = 0
-            global FullList = []
+            FullList = []
             
             for member in act:
+                global FullList
                 memberTime = act.values()
                 lineItem = '{} : {} \n'.format(member, memberTime[listIndex])
                 FullList.append(lineItem)
