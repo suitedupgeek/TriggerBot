@@ -499,14 +499,14 @@ def activityLog(m):
         else:
             
             listIndex = 0
-            FullList = []
+            FullList = ""
             
             for member in act:
                 global FullList
                 memberTime = act.values()
                 lineItem = '{} : {} \n'.format(member, memberTime[listIndex])
                 bot.send_message(m.chat.id, lineItem)
-                FullList.append(lineItem)
+                FullList += lineItem
                 listIndex += 1
             
             bot.send_message(m.chat.id, FullList)
