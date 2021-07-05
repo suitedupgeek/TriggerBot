@@ -502,7 +502,9 @@ def activityLog(m):
             bot.send_message(m.chat.id, 'Activity:\n' + sentenceList)
 
             for member in act:
-                print(act.keys() + act.values())
+                activityList = act.keys() + " : " act.values() "\n"
+            
+            bot.send_message(m.chat.id, activityList)
 
     else:
         bot.send_message(m.chat.id, 'This group doesn\'t have activity.')
