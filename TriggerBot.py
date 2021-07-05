@@ -4,6 +4,7 @@ import json
 import random
 import re
 import sys
+import datetime
 reload(sys)
 sys.setdefaultencoding('utf8')
 from time import time, asctime, sleep
@@ -62,6 +63,25 @@ def get_triggers(group_id):
         return triggers[str(group_id)]
     else:
         return False
+
+# Check if Activity file exists and load, if not, create it.
+if exists('activity.json'):
+    with open('activity.json') as e:
+        activity = json.load(e)
+    print('Activity file loaded.')
+else: 
+    with open('activity.json', 'w') as e:
+        json.dump({}, e)
+
+# Function save activity updates to a file.
+def save_activity():
+    with open('activity.json', 'w') as e:
+        json.dump(activity, e, indent=2)
+    print('Activity file saved.')
+
+# Function to get activity list for a group.
+def get_activity(group_id):
+    if(str(group_id) in )
 
 # END OF TRIGGERS SECTION
 
@@ -135,7 +155,7 @@ def listener2(messages):
             message_text = m.text.encode('ascii', 'ignore').decode('ascii')
         else:
             message_text = m.content_type
-        print('{}[{}]:{}'.format(name, cid, message_text))
+        print('{}:{}[{}]:{}'.format(datetime.now(),name, cid, message_text))
         rand_count = rand_count + 1
 
 # Python3 version.
