@@ -79,9 +79,6 @@ def save_activity():
         json.dump(activity, e, indent=2)
     print('Activity file saved.')
 
-# Function to get activity list for a group.
-def get_activity(group_id):
-    if(str(group_id) in )
 
 # END OF TRIGGERS SECTION
 
