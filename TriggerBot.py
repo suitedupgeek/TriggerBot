@@ -490,8 +490,8 @@ def ping(m):
 @bot.message_handler(commands=['activity','Activity'])
 def activity(m):
     if(m.chat.type in ['group', 'supergroup']):
-    act = get_activity(m.chat.id)
-    sentenceList = ", ".join(act)
+        act = get_activity(m.chat.id)
+        sentenceList = ", ".join(act)
 
     if(act):
         if(len(act.keys()) == 0):
