@@ -164,9 +164,9 @@ def listener2(messages):
         print('{}:{}[{}]:{}'.format(time.strftime("%Y-%m-%d %H:%M:%S"),name, cid, message_text))
 
         if(get_activity(m.chat.id)):
-            get_activity(m.chat.id)[name] = time.strftime("%Y-%m-%d %H:%M:%S")
+            get_activity(m.chat.id)[name] = time.strftime("%Y-%m-%d %H:%M")
         else:
-            activity[str(m.chat.id)] = {name: time.strftime("%Y-%m-%d %H:%M:%S")}
+            activity[str(m.chat.id)] = {name: time.strftime("%Y-%m-%d %H:%M")}
         
         save_activity()
 
@@ -505,7 +505,6 @@ def activityLog(m):
                 global FullList
                 memberTime = act.values()
                 lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
-                bot.send_message(m.chat.id, lineItem)
                 FullList += lineItem
                 listIndex += 1
             
