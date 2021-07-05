@@ -491,17 +491,15 @@ def ping(m):
 def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
-        print(act)
         sentenceList = "\n ".join(act).join(act.values())
 
     if(act):
         if(len(act.keys()) == 0):
             bot.send_message(m.chat.id, 'This group doesn\'t have any activity')
         else:
-            bot.send_message(m.chat.id, 'Activity:\n' + sentenceList)
 
             for member in act:
-                memberName = str(act.keys())
+                memberName = act.keys()
                 memberTime = act.values()
                 FullList = '{} : {}'.format(memberName, memberTime)
             
