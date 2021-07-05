@@ -489,7 +489,19 @@ def ping(m):
 
 @bot.message_handler(commands=['activity','Activity'])
 def activityLog(m):
-    bot.send_message(m.chat.id,"Yep ok first stage done.")      
+    bot.send_message(m.chat.id,"Yep ok first stage done.")
+
+    if(m.chat.type in ['group', 'supergroup']):
+        act = get_activity(m.chat.id)
+        sentenceList = ", ".join(act)
+
+    if(act):
+        if(len(act.keys()) == 0):
+            bot.send_message(m.chat.id, 'This group doesn\'t have any activity')
+        else:
+            bot.send_message(m.chat.id, 'Activity:\n' + sentenceList)
+    else:
+        bot.send_message(m.chat.id, 'This group doesn\'t have activity.')
 
 # END OF COMMAND IMPLEMENTATION SECTION.
 
