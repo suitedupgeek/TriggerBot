@@ -492,7 +492,6 @@ def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
         print(act)
-        altSentence = act + str(act.values())
         sentenceList = "\n ".join(act).join(act.values())
 
     if(act):
@@ -500,12 +499,11 @@ def activityLog(m):
             bot.send_message(m.chat.id, 'This group doesn\'t have any activity')
         else:
             bot.send_message(m.chat.id, 'Activity:\n' + sentenceList)
-            bot.send_message(m.chat.id, 'Activity:\n' + altSentence)
 
             for member in act:
                 memberName = str(act.keys())
                 memberTime = act.values()
-                FullList = memberName.decode('utf-8') + " : " + str(memberTime)
+                FullList = '{} : {}'.format(memberName, memberTime)
             
             bot.send_message(m.chat.id, FullList)
 
