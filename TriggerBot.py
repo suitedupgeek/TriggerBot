@@ -497,10 +497,13 @@ def activityLog(m):
         if(len(act.keys()) == 0):
             bot.send_message(m.chat.id, 'This group doesn\'t have any activity')
         else:
+            
+            listIndex = 0
 
             for member in act:
                 memberTime = act.values()
-                FullList = '{} : {}'.format(member, memberTime[member])
+                FullList = '{} : {}'.format(member, memberTime[listIndex])
+                listIndex += 1
             
             bot.send_message(m.chat.id, FullList)
 
