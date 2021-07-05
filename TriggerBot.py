@@ -502,7 +502,7 @@ def activityLog(m):
             bot.send_message(m.chat.id, 'Activity:\n' + sentenceList)
 
             for member in act:
-                activityList = act.keys() + " : " act.values() "\n"
+                activityList = str(act.keys()) + " : " str(act.values()) "\n"
             
             bot.send_message(m.chat.id, activityList)
 
