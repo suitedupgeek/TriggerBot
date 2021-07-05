@@ -505,7 +505,8 @@ def activityLog(m):
                 memberName = act.keys()
                 memberTime = act.values()
                 FullList = str(memberName) + " : " + str(memberTime)
-                print(FullList)
+            
+            bot.send_message(m.chat.id, FullList)
 
     else:
         bot.send_message(m.chat.id, 'This group doesn\'t have activity.')
