@@ -494,7 +494,7 @@ def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
         print(act)
-        sentenceList = "\n ".join(act)
+        sentenceList = "\n ".join(act).join(act.values())
 
     if(act):
         if(len(act.keys()) == 0):
