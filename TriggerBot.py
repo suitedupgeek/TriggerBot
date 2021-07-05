@@ -79,6 +79,13 @@ def save_activity():
         json.dump(activity, e, indent=2)
     print('Activity file saved.')
 
+# Function to get triggers list for a group.
+def get_activity(group_id):
+    if(str(group_id) in activity.keys()):
+        return activity[str(group_id)]
+    else:
+        return False
+
 
 # END OF TRIGGERS SECTION
 
@@ -155,6 +162,14 @@ def listener2(messages):
         
         time = datetime.datetime.now()
         print('{}:{}[{}]:{}'.format(time.strftime("%Y-%m-%d %H:%M:%S"),name, cid, message_text))
+
+        if(get_activity(m.chat.id)):
+            get_activity(m.chat.id)[name] = time.strftime("%Y-%m-%d %H:%M:%S")
+        else:
+            activity[str(m.chat.id)] = {name: time.strftime("%Y-%m-%d %H:%M:%S"}
+        
+        save_activity()
+
         rand_count = rand_count + 1
 
 # Python3 version.
