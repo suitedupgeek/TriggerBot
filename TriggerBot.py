@@ -491,7 +491,7 @@ def ping(m):
 def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
-        sentenceList = "\n ".join(act).join(act.values())
+        sentenceList = "\n ".join(act)
 
     if(act):
         if(len(act.keys()) == 0):
@@ -499,9 +499,8 @@ def activityLog(m):
         else:
 
             for member in act:
-                memberName = act.keys()
                 memberTime = act.values()
-                FullList = '{} : {}'.format(memberName, memberTime)
+                FullList = '{} : {}'.format(member, memberTime)
             
             bot.send_message(m.chat.id, FullList)
 
