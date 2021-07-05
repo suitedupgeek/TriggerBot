@@ -499,7 +499,7 @@ def activityLog(m):
         else:
             
             listIndex = 0
-            global FullList
+            FullList = ""
             
             for member in act:
                 memberTime = act.values()
