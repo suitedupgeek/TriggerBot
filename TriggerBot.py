@@ -504,7 +504,7 @@ def activityLog(m):
             
             for member in act:
                 memberTime = act.values()
-                timeObject = datetime.strptime(memberTime, '%Y-%m-%d %H:%M:%S')
+                timeObject = datetime.datetime.strptime(memberTime, '%Y-%m-%d %H:%M:%S')
                 print(timeObject)
                 lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
                 FullList += lineItem
