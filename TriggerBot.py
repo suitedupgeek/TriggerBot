@@ -502,7 +502,6 @@ def activityLog(m):
             global FullList
             
             for member in act:
-                global FullList
                 memberTime = act.values()
                 lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
                 FullList += lineItem
