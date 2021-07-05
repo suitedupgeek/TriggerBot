@@ -77,7 +77,6 @@ else:
 def save_activity():
     with open('activity.json', 'w') as e:
         json.dump(activity, e, indent=2)
-    print('Activity file saved.')
 
 # Function to get triggers list for a group.
 def get_activity(group_id):
@@ -153,6 +152,10 @@ def listener2(messages):
             bot.send_message(m.chat.id,random.choice(randomSass))
             #Reset counter
             rand_count = 0
+        
+        rand_count = rand_count + 1
+
+        # Catch some chat values for logging 
         cid = m.chat.id
         name = m.from_user.first_name.encode('ascii', 'ignore').decode('ascii')
         if(m.content_type == 'text'):
@@ -160,17 +163,17 @@ def listener2(messages):
         else:
             message_text = m.content_type
         
+        # Console log messages
         time = datetime.datetime.now()
         print('{}:{}[{}]:{}'.format(time.strftime("%Y-%m-%d %H:%M:%S"),name, cid, message_text))
 
+        # Record last time user talked 
         if(get_activity(m.chat.id)):
             get_activity(m.chat.id)[name] = time.strftime("%Y-%m-%d %H:%M:%S")
         else:
             activity[str(m.chat.id)] = {name: time.strftime("%Y-%m-%d %H:%M:%S")}
         
         save_activity()
-
-        rand_count = rand_count + 1
 
 # Python3 version.
 def listener3(messages):
@@ -483,10 +486,16 @@ def roll(m):
     else:
         bot.send_message(m.chat.id,"Stupid human. Of course you typed the wrong format. It's either '/roll' or '/roll XdY' where X is the number of dice, and Y is how many sides each dice has. For example, '/roll 2d6'")
 
-@bot.message_handler(commands=['ping'])
+@bot.message_handler(commands=['ping', 'Ping'])
 def ping(m):
     bot.send_message(m.chat.id,"Yes yes yes. Here I am, brain the size of a planet, and they tell me to repeat things for you and roll dice.")
-        
+
+@bot.message_handler(commands=['activity', 'Activity'])
+
+def activity(m):
+
+
+
 
 # END OF COMMAND IMPLEMENTATION SECTION.
 
