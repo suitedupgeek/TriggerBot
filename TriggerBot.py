@@ -489,11 +489,10 @@ def ping(m):
 
 @bot.message_handler(commands=['activity','Activity'])
 def activityLog(m):
-    bot.send_message(m.chat.id,"Yep ok first stage done.")
-
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
         print(act)
+        altSentence = act + str(act.values())
         sentenceList = "\n ".join(act).join(act.values())
 
     if(act):
@@ -501,6 +500,7 @@ def activityLog(m):
             bot.send_message(m.chat.id, 'This group doesn\'t have any activity')
         else:
             bot.send_message(m.chat.id, 'Activity:\n' + sentenceList)
+            bot.send_message(m.chat.id, 'Activity:\n' + altSentence)
 
             for member in act:
                 memberName = str(act.keys())
