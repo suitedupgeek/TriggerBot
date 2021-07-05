@@ -483,10 +483,23 @@ def roll(m):
     else:
         bot.send_message(m.chat.id,"Stupid human. Of course you typed the wrong format. It's either '/roll' or '/roll XdY' where X is the number of dice, and Y is how many sides each dice has. For example, '/roll 2d6'")
 
-@bot.message_handler(commands=['ping'])
+@bot.message_handler(commands=['ping','Ping'])
 def ping(m):
     bot.send_message(m.chat.id,"Yes yes yes. Here I am, brain the size of a planet, and they tell me to repeat things for you and roll dice.")
-        
+
+@bot.message_handler(commands=['activity','Activity'])
+def activity(m):
+    if(m.chat.type in ['group', 'supergroup']):
+    act = get_activity(m.chat.id)
+    sentenceList = ", ".join(act)
+
+    if(act):
+        if(len(act.keys()) == 0):
+            bot.send_message(m.chat.id, 'This group hasn\'t had any activity.')
+        else:
+            bot.send_message(m.chat.id, 'Latest Activity:\n' + sentenceList)
+    else:
+        bot.send_message(m.chat.id, 'This group doesn\'t have any activity.')
 
 # END OF COMMAND IMPLEMENTATION SECTION.
 
