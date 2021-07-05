@@ -72,6 +72,7 @@ if exists('activity.json'):
 else: 
     with open('activity.json', 'w') as e:
         json.dump({}, e)
+    print('Activity file created.')
 
 # Function save activity updates to a file.
 def save_activity():
