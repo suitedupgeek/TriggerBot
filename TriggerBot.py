@@ -509,22 +509,26 @@ def activityLog(m):
                 memberTime = act.values()
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
                 targetTime = datetime.now() - timedelta(days=2)
+
                 try:
+                    # Get user detail - if it still exists in the room move on.
                     detailMember = bot.get_chat_member(m.chat.id,member)
                 except:
-                    detailMember.status = None
-                    print('User not found: ' + member)
+                    # User not found in the room, set status to left
+                    detailMember.status = 'left'
+                    print('User not found: ' + member + 'setting status to left')
                 
+                # Remove users from activity.json if status is 'left' or 'kicked' 
                 if detailMember.status is not None:
-                    print(detailMember.user.username)
-                    print(detailMember.status)
+                    
 
 
-
+                    #print(detailMember.user.username)
+                    #print(detailMember.status)
 
                 # hiding this temporarily re-indent the lineItem/FullList
                 #if(memberTimeObject < targetTime):
-                lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
+                lineItem = '{0:10} \t: {1} {} \n'.format(memberTime[listIndex], detailMember.first_name, detailMember.last_name)
                 FullList += lineItem
                 listIndex += 1
             
