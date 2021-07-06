@@ -581,14 +581,14 @@ def activityLog(m):
                     #if detailMember.status in ("member","creator","administrator"):
                             if (detailMember.user.last_name == None):
                                 detailMember.user.last_name = " "
-                            lineItem = '{0:10} \t: {1} {2} {3} \n'.format(prettyDate, detailMember.user.first_name, detailMember.user.last_name, detailMember.user.id)
+                            lineItem = '{0:10} \t: {1} {2}\n'.format(prettyDate, detailMember.user.first_name, detailMember.user.last_name)
                             FullList += lineItem
                 elif (behaviour > 0):
                     #if detailMember.status in ("member","creator","administrator"):
                         if (memberTimeObject < targetTime):
                                 if (detailMember.user.last_name == None):
                                     detailMember.user.last_name = " "
-                                lineItem = '{0:10} \t: {1} {2} {3} \n'.format(prettyDate, detailMember.user.first_name, detailMember.user.last_name, detailMember.user.id)
+                                lineItem = '{0:10} \t: {1} {2}\n'.format(prettyDate, detailMember.user.first_name, detailMember.user.last_name)
                                 FullList += lineItem
                 listIndex += 1
 
