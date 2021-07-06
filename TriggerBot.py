@@ -511,7 +511,7 @@ def activityLog(m):
             
             listIndex = 0
             if (behaviour == 0):
-                FullList = "Activity for all users: \n\n"
+                FullList = "Activity for all users: \n\n Note: If you want to specify a number of days use '/activity 2' where 2 is number of days. \n\n"
                 targetTime = datetime.now() - timedelta(days=365)
                 print('Default behaviour, show everybody')
             else:
