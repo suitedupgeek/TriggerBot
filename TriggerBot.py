@@ -542,7 +542,7 @@ def activityLog(m):
                     friendlyTime = "In last 4 days"
                 elif memberTimeObject > morethan:
                     friendlyTime = "In last 5 days"
-                elif memberTimeObject > three days:
+                elif memberTimeObject > ages:
                     friendlyTime = "Ages ago ..."
 
                 try:
