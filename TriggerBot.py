@@ -497,6 +497,9 @@ def activityLog(m):
         sentenceList = "\n ".join(act)
 
     if(act):
+        sorted((time.strptime(d, "%H:%M:%S") for d in time_list), reverse=True)
+
+
         if(len(act.keys()) == 0):
             bot.send_message(m.chat.id, 'This group doesn\'t have any activity')
         else:
@@ -512,6 +515,8 @@ def activityLog(m):
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
                 print('Time Object')
                 print(memberTimeObject)
+                memberTimeObjectMinus = memberTimeObject - timedelta(hours=1)
+                print(memberTimeObjectMinus)
 
                 lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
                 FullList += lineItem
