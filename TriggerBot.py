@@ -518,11 +518,33 @@ def activityLog(m):
                 FullList = 'Users not active in last {} days: \n\n'.format(str(behaviour))
                 targetTime = datetime.now() - timedelta(days=behaviour)
             
+            recently = datetime.now() - timedelta(days=1)
+            twodays = datetime.now() - timedelta(days=2)
+            threedays = datetime.now() - timedelta(days=3)
+            fourdays = datetime.now() - timedelta(days=4)
+            morethan = datetime.now() - timedelta(days=5)
+            ages = datetime.now() - timedelta(days=6)
+
+            if targetTime > recently:
+                friendlyDate
+            
             for member in act:
                 memberTime = act.values()
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
-                print memberTimeObject
-                print listIndex
+
+                if memberTimeObject > recently:
+                    friendlyTime = "Seen Recently"
+                elif memberTimeObject > twodays:
+                    friendlyTime = "In last 2 days"
+                elif memberTimeObject > threedays:
+                    friendlyTime = "In last 3days"
+                elif memberTimeObject > fourdays:
+                    friendlyTime = "In last 4 days"
+                elif memberTimeObject > morethan:
+                    friendlyTime = "In last 5 days"
+                elif memberTimeObject > three days:
+                    friendlyTime = "Ages ago ..."
+
                 try:
                     # Get user detail - if it still exists in the room move on.
                     detailMember = bot.get_chat_member(m.chat.id,member)
@@ -538,14 +560,14 @@ def activityLog(m):
                     if detailMember.status in ("member","creator","administrator"):
                             if (detailMember.user.last_name == None):
                                 detailMember.user.last_name = " "
-                            lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
+                            lineItem = '{0:10} \t: {1} {2} \n'.format(friendlyTime, detailMember.user.first_name, detailMember.user.last_name)
                             FullList += lineItem
                 elif (behaviour > 0):
                     if detailMember.status in ("member","creator","administrator"):
                         if (memberTimeObject < targetTime):
                                 if (detailMember.user.last_name == None):
                                     detailMember.user.last_name = " "
-                                lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
+                                lineItem = '{0:10} \t: {1} {2} \n'.format(friendlyTime, detailMember.user.first_name, detailMember.user.last_name)
                                 FullList += lineItem
                 listIndex += 1
 
