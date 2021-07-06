@@ -545,6 +545,10 @@ def activityLog(m):
                             listIndex += 1
                 elif (behaviour > 0):
                     if detailMember.status in ("member","creator","administrator"):
+                        print("Member Time:")
+                        print(memberTimeObject)
+                        print("Target Time:")
+                        print(targetTime)
                         if (memberTimeObject < targetTime):
                                 if (detailMember.user.last_name == None):
                                     detailMember.user.last_name = " "
