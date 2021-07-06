@@ -507,14 +507,8 @@ def activityLog(m):
             
             for member in act:
                 memberTime = act.values()
-                print('Original Time:')
-                print(memberTime[listIndex])
-                #memberTimeObject = memberTime[listIndex] + timedelta(hours=9)
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
-                print('Time Object')
-                print(memberTimeObject)
                 targetTime = datetime.now() - timedelta(days=2)
-                print(memberTimeObjectMinus)
 
                 if(memberTimeObject < targetTime):
                     lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
