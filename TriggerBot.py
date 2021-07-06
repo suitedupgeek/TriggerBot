@@ -513,7 +513,7 @@ def activityLog(m):
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
                 print('Time Object')
                 print(memberTimeObject)
-                targetTime = time.now() - timedelta(days=2)
+                targetTime = datetime.now() - timedelta(days=2)
                 print(memberTimeObjectMinus)
 
                 if(memberTimeObject < targetTime):
