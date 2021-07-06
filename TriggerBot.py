@@ -510,12 +510,18 @@ def activityLog(m):
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
                 targetTime = datetime.now() - timedelta(days=2)
 
+                if (detailMember = bot.get_chat_member(m.chat.id,member)):
+                    print(detailMember.user.username)
+                    print(detailMember.status)
+                else:
+                    print('User not found')
+
+
+
                 # hiding this temporarily re-indent the lineItem/FullList
                 #if(memberTimeObject < targetTime):
                 lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
                 FullList += lineItem
-                detailMember = bot.get_chat_member(m.chat.id,member)
-                print(detailMember)
                 listIndex += 1
             
             bot.send_message(m.chat.id, FullList)
