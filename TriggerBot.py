@@ -524,9 +524,6 @@ def activityLog(m):
             fourdays = datetime.now() - timedelta(days=4)
             morethan = datetime.now() - timedelta(days=5)
             ages = datetime.now() - timedelta(days=6)
-
-            if targetTime > recently:
-                friendlyDate
             
             for member in act:
                 memberTime = act.values()
