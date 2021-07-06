@@ -538,7 +538,7 @@ def activityLog(m):
                 # TODO need to actually make this happen rather than just ignoring them.
                 print(detailMember)
                 if (behaviour == 0):
-                    if detailMember.status is not "left" and detailMember.status is not "kicked":
+                    if detailMember.status in ("member","creator","administrator"):
                             bot.send_message(m.chat.id, detailMember.status)
                             if (detailMember.user.last_name == None):
                                 detailMember.user.last_name = " "
@@ -546,7 +546,7 @@ def activityLog(m):
                             FullList += lineItem
                             listIndex += 1
                 elif (behaviour > 0):
-                    if detailMember.status is not "left" and detailMember.status is not "kicked"
+                    if detailMember.status in ("member","creator","administrator"):
                         if (memberTimeObject < targetTime):
                                 if (detailMember.user.last_name == None):
                                     detailMember.user.last_name = " "
