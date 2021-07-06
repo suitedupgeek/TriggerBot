@@ -525,12 +525,11 @@ def activityLog(m):
                 if detailMember.status is not 'left':
                     # hiding this temporarily re-indent the lineItem/FullList
                     #if(memberTimeObject < targetTime):
-                    lineItem = '{0:10} \t: {1} {1} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
+                    lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
                     FullList += lineItem
                     listIndex += 1
                     #print(detailMember.user.username)
                     #print(detailMember.status)
-                bot.send_message(m.chat.id,detailMember.user.last_name)
             bot.send_message(m.chat.id, FullList)
 
     else:
