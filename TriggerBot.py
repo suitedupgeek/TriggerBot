@@ -556,7 +556,6 @@ def activityLog(m):
             if (behaviour == 0):
                 FullList = "Activity for all users: \n\n"
                 targetTime = datetime.now() - timedelta(days=365)
-                print('Default behaviour, show everybody')
             else:
                 FullList = 'Users not active in last {} days: \n\n'.format(str(behaviour))
                 targetTime = datetime.now() - timedelta(days=behaviour)
