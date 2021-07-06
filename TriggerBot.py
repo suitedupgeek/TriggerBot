@@ -536,7 +536,7 @@ def activityLog(m):
                 # Remove users from activity.json if status is 'left' or 'kicked' 
                 #if detailMember.status is not None:
                 # TODO need to actually make this happen rather than just ignoring them.
-                    
+                print(detailMember)
                 if (behaviour == 0):
                     if detailMember.status is not 'left' or not 'kicked':
                             if (detailMember.user.last_name == None):
