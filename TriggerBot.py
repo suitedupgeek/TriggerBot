@@ -510,9 +510,10 @@ def activityLog(m):
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
                 targetTime = datetime.now() - timedelta(days=2)
 
-                if(memberTimeObject < targetTime):
-                    lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
-                    FullList += lineItem
+                # hiding this temporarily re-indent the lineItem/FullList
+                #if(memberTimeObject < targetTime):
+                lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
+                FullList += lineItem
 
                 listIndex += 1
             
