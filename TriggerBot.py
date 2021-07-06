@@ -512,13 +512,14 @@ def activityLog(m):
             listIndex = 0
             if (behaviour == 0):
                 FullList = "Activity for all users: \n\n"
+                targetTime = datetime.now() - timedelta(days=365)
             else:
                 FullList = 'Users not active in last {} days: \n\n'.format(str(behaviour))
+                targetTime = datetime.now() - timedelta(days=behaviour)
             
             for member in act:
                 memberTime = act.values()
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
-                targetTime = datetime.now() - timedelta(days=2)
 
                 try:
                     # Get user detail - if it still exists in the room move on.
