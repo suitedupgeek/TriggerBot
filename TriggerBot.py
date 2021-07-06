@@ -513,7 +513,7 @@ def activityLog(m):
                 try:
                     # Get user detail - if it still exists in the room move on.
                     detailMember = bot.get_chat_member(m.chat.id,member)
-                    print(detailMember)
+                    #print(detailMember)
                 except:
                     # User not found in the room, set status to left
                     detailMember.status = 'left'
