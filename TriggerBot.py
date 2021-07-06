@@ -496,7 +496,14 @@ def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
     
-    if(act):
+    if (len(m.text.split(" ",1)) > 2): # default behaviour
+        bot.send_message(m.chat.id, 'Bad Arguments')
+    elif (len(m.text.split(" ",1)) == 1):
+        behaviour = 0
+    else:
+        behaviour = int(m.text.split(" ",1)[1])
+    
+    if(act and isinstance(behaviour, int)):
 
         if(len(act.keys()) == 0):
             bot.send_message(m.chat.id, 'This group doesn\'t have any activity')
