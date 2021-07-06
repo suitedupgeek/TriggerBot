@@ -496,7 +496,7 @@ def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
     
-    if (len(m.text > 12): # default behaviour
+    if (len(m.text > 12)):
         bot.send_message(m.chat.id, 'Bad Arguments')
     elif (len(m.text.split(" ",1)) == 1):
         behaviour = 0
