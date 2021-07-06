@@ -534,16 +534,16 @@ def activityLog(m):
 
                 if memberTimeObject > recently:
                     friendlyTime = "Seen Recently"
-                elif memberTimeObject > twodays:
-                    friendlyTime = "In last 2 days"
-                elif memberTimeObject > threedays:
-                    friendlyTime = "In last 3days"
-                elif memberTimeObject > fourdays:
-                    friendlyTime = "In last 4 days"
-                elif memberTimeObject > morethan:
-                    friendlyTime = "In last 5 days"
-                elif memberTimeObject > ages:
-                    friendlyTime = "Ages ago ..."
+                elif memberTimeObject < twodays:
+                    friendlyTime = "At least 2 days"
+                elif memberTimeObject < threedays:
+                    friendlyTime = "At least 3 days"
+                elif memberTimeObject < fourdays:
+                    friendlyTime = "At least 4 days"
+                elif memberTimeObject < morethan:
+                    friendlyTime = "At least 5 days"
+                elif memberTimeObject < ages:
+                    friendlyTime = "More than 5 days"
 
                 try:
                     # Get user detail - if it still exists in the room move on.
