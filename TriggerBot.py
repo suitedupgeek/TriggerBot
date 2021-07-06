@@ -211,9 +211,9 @@ def listener2(messages):
         print('{}:{}:{}:[{}]:{}'.format(time.strftime("%Y-%m-%d %H:%M:%S"),name, mid, cid, message_text))
 
         if(get_activity(m.chat.id)):
-            get_activity(m.chat.id)[mid] = time.strftime("%Y-%m-%d %H:%M")
+            get_activity(m.chat.id)[mid] = time.strftime("%Y-%m-%d %H:%M:%S")
         else:
-            activity[str(m.chat.id)] = {mid: time.strftime("%Y-%m-%d %H:%M")}
+            activity[str(m.chat.id)] = {mid: time.strftime("%Y-%m-%d %H:%M:%S")}
         
         save_activity()
 
@@ -562,7 +562,7 @@ def activityLog(m):
             
             for member in act:
                 memberTime = act.values()
-                memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
+                memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M:%S')
                 prettyDate = pretty_date(memberTimeObject)
 
                 try:
