@@ -495,7 +495,6 @@ def ping(m):
 def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
-        sentenceList = "\n ".join(act)
     
     if(act):
 
