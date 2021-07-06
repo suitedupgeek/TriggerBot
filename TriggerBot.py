@@ -530,7 +530,7 @@ def activityLog(m):
                     listIndex += 1
                     #print(detailMember.user.username)
                     #print(detailMember.status)
-
+                bot.send_message(m.chat.id,detailMember.user.last_name)
             bot.send_message(m.chat.id, FullList)
 
     else:
