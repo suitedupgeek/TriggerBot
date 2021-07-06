@@ -168,9 +168,9 @@ def listener2(messages):
         print('{}:{}:{}:[{}]:{}'.format(time.strftime("%Y-%m-%d %H:%M:%S"),name, mid, cid, message_text))
 
         if(get_activity(m.chat.id)):
-            get_activity(m.chat.id)[name] = time.strftime("%Y-%m-%d %H:%M")
+            get_activity(m.chat.id)[mid] = time.strftime("%Y-%m-%d %H:%M")
         else:
-            activity[str(m.chat.id)] = {name: time.strftime("%Y-%m-%d %H:%M")}
+            activity[str(m.chat.id)] = {mid: time.strftime("%Y-%m-%d %H:%M")}
         
         save_activity()
 
