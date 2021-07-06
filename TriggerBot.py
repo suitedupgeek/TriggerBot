@@ -509,12 +509,16 @@ def activityLog(m):
                 memberTime = act.values()
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
                 targetTime = datetime.now() - timedelta(days=2)
-                detailMember = bot.get_chat_member(m.chat.id,member)
+                try:
+                    detailMember = bot.get_chat_member(m.chat.id,member)
+                except:
+                    detailMember.status = None
+                    print('User not found: ' + member)
+                
                 if detailMember.status is not None:
                     print(detailMember.user.username)
                     print(detailMember.status)
-                else:
-                    print('User not found')
+
 
 
 
