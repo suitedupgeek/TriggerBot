@@ -158,7 +158,7 @@ def listener2(messages):
             rand_count = 0
         cid = m.chat.id
         name = m.from_user.first_name.encode('ascii', 'ignore').decode('ascii')
-        mid = m.from_user.id 
+        mid = m.from_user.id.encode('ascii', 'ignore').decode('ascii')
         if(m.content_type == 'text'):
             message_text = m.text.encode('ascii', 'ignore').decode('ascii')
         else:
