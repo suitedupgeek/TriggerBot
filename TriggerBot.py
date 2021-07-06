@@ -537,6 +537,7 @@ def activityLog(m):
                     # hiding this temporarily re-indent the lineItem/FullList
                     #if(memberTimeObject < targetTime):
                     if (detailMember.user.last_name == 'None'):
+                        print(detailMember.user.last_name)
                         detailMember.user.last_name = "None"
                     lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
                     FullList += lineItem
