@@ -510,7 +510,10 @@ def activityLog(m):
         else:
             
             listIndex = 0
-            FullList = "People not active in last 2 days: \n\n"
+            if (behaviour == 0):
+                FullList = "Activity for all users: \n\n"
+            else:
+                FullList = 'Users not active in last {} days: \n\n'.format(str(behaviour))
             
             for member in act:
                 memberTime = act.values()
