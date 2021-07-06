@@ -536,7 +536,7 @@ def activityLog(m):
                 if detailMember.status is not 'left' or not 'kicked':
                     # hiding this temporarily re-indent the lineItem/FullList
                     #if(memberTimeObject < targetTime):
-                    if (detailMember.user.last_name == 'None')
+                    if (detailMember.user.last_name == 'None'):
                         detailMember.user.last_name = "None"
                     lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
                     FullList += lineItem
