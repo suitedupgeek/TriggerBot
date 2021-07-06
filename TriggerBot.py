@@ -503,7 +503,7 @@ def activityLog(m):
         else:
             
             listIndex = 0
-            FullList = ""
+            FullList = "People not active in last 2 days: \n\n"
             
             for member in act:
                 memberTime = act.values()
@@ -513,11 +513,13 @@ def activityLog(m):
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
                 print('Time Object')
                 print(memberTimeObject)
-                memberTimeObjectMinus = memberTimeObject - timedelta(hours=1)
+                targetTime = time.now() - timedelta(days=2)
                 print(memberTimeObjectMinus)
 
-                lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
-                FullList += lineItem
+                if(memberTimeObject < targetTime):
+                    lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
+                    FullList += lineItem
+
                 listIndex += 1
             
             bot.send_message(m.chat.id, FullList)
