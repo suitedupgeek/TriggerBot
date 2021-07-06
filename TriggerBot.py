@@ -540,7 +540,7 @@ def activityLog(m):
                                 detailMember.user.last_name = " "
                             lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
                             FullList += lineItem
-                            listIndex += 1
+                            
                 elif (behaviour > 0):
                     #if detailMember.status in ("member","creator","administrator"):
                         #print("Member Time:")
@@ -552,7 +552,8 @@ def activityLog(m):
                                     detailMember.user.last_name = " "
                                 lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
                                 FullList += lineItem
-                                listIndex += 1
+                
+                listIndex += 1
 
             bot.send_message(m.chat.id, FullList)
 
