@@ -523,7 +523,7 @@ def activityLog(m):
             for member in act:
                 memberTime = act.values()
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
-
+                print memberTimeObject
                 try:
                     # Get user detail - if it still exists in the room move on.
                     detailMember = bot.get_chat_member(m.chat.id,member)
@@ -544,10 +544,10 @@ def activityLog(m):
                             listIndex += 1
                 elif (behaviour > 0):
                     #if detailMember.status in ("member","creator","administrator"):
-                        print("Member Time:")
-                        print(memberTimeObject)
-                        print("Target Time:")
-                        print(targetTime)
+                        #print("Member Time:")
+                        #print(memberTimeObject)
+                        #print("Target Time:")
+                        #print(targetTime)
                         if (memberTimeObject < targetTime):
                                 if (detailMember.user.last_name == None):
                                     detailMember.user.last_name = " "
