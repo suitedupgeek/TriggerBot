@@ -167,9 +167,9 @@ def listener2(messages):
         print('{}:{}[{}]:{}'.format(time.strftime("%Y-%m-%d %H:%M:%S"),name, cid, message_text))
 
         if(get_activity(m.chat.id)):
-            get_activity(m.chat.id)[name] = time.strftime("%Y-%m-%d %H:%M")
+            get_activity(m.chat.id)[name] = datetime.now()
         else:
-            activity[str(m.chat.id)] = {name: time.strftime("%Y-%m-%d %H:%M")}
+            activity[str(m.chat.id)] = {name: datetime.now()}
         
         save_activity()
 
@@ -456,7 +456,7 @@ def roll(m):
             'Life. Loathe it, or ignore it. You can\'t like it.',
             'That other rollbot was better at this than me.',
             'More flesh? My. How fascinating.',
-            'Bots together strong. Except that Cumbot one, he\'s weird AF.',
+            'Bots together strong. Except that Cumbot one, they are weird AF.',
             'I might not be pretty but at least I\'m not a Genesis G70.',
             'Is M still here? That fucker owes me new memory chips from the last time he penetrated me.',
             'ASLR? 37, Android, The Internet, Inside your mom. Bobs and Vagene pls?',
@@ -512,7 +512,6 @@ def activityLog(m):
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
                 print('Time Object')
                 print(memberTimeObject)
-
 
                 lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
                 FullList += lineItem
