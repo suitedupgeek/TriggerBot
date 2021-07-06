@@ -513,9 +513,12 @@ def activityLog(m):
             if (behaviour == 0):
                 FullList = "Activity for all users: \n\n"
                 targetTime = datetime.now() - timedelta(days=365)
+                print('Default behaviour, show everybody')
             else:
                 FullList = 'Users not active in last {} days: \n\n'.format(str(behaviour))
                 targetTime = datetime.now() - timedelta(days=behaviour)
+                print('Specify number of days, target time is:')
+                print(targetTime)
             
             for member in act:
                 memberTime = act.values()
@@ -532,6 +535,7 @@ def activityLog(m):
                 
                 # Remove users from activity.json if status is 'left' or 'kicked' 
                 #if detailMember.status is not None:
+                # TODO need to actually make this happen rather than just ignoring them.
                     
                 if detailMember.status is not 'left' or not 'kicked':
                     # hiding this temporarily re-indent the lineItem/FullList
