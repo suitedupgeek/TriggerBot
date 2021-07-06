@@ -531,6 +531,7 @@ def activityLog(m):
                 lineItem = '{0:10} \t: {1} {1} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
                 FullList += lineItem
                 listIndex += 1
+                detailMember = None
             
             bot.send_message(m.chat.id, FullList)
 
