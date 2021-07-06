@@ -514,7 +514,7 @@ def activityLog(m):
                 #if(memberTimeObject < targetTime):
                 lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
                 FullList += lineItem
-                detailMember = bot.ChatMember(m.chat.id,member)
+                detailMember = bot.get_chat_member(m.chat.id,member)
                 listIndex += 1
             
             bot.send_message(m.chat.id, FullList)
