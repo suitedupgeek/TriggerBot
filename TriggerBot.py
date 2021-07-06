@@ -496,7 +496,7 @@ def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
     
-    if (len(m.text.split(" ",1)) > 2): # default behaviour
+    if (len(m.text > 12): # default behaviour
         bot.send_message(m.chat.id, 'Bad Arguments')
     elif (len(m.text.split(" ",1)) == 1):
         behaviour = 0
@@ -511,7 +511,7 @@ def activityLog(m):
             
             listIndex = 0
             if (behaviour == 0):
-                FullList = "Activity for all users: \n\n Note: If you want to specify a number of days use '/activity 2' where 2 is number of days. \n\n"
+                FullList = "Activity for all users: \n\n"
                 targetTime = datetime.now() - timedelta(days=365)
                 print('Default behaviour, show everybody')
             else:
