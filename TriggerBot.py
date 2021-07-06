@@ -534,12 +534,10 @@ def activityLog(m):
                     print('User not found: ' + member + 'setting status to left')
                 
                 # Remove users from activity.json if status is 'left' or 'kicked' 
-                #if detailMember.status is not None:
                 # TODO need to actually make this happen rather than just ignoring them.
                 print(detailMember)
                 if (behaviour == 0):
                     if detailMember.status in ("member","creator","administrator"):
-                            bot.send_message(m.chat.id, detailMember.status)
                             if (detailMember.user.last_name == None):
                                 detailMember.user.last_name = " "
                             lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
