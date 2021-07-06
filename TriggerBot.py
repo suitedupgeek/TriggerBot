@@ -521,18 +521,15 @@ def activityLog(m):
                 # Remove users from activity.json if status is 'left' or 'kicked' 
                 #if detailMember.status is not None:
                     
-
-
+                if detailMember.status is not 'left':
+                    # hiding this temporarily re-indent the lineItem/FullList
+                    #if(memberTimeObject < targetTime):
+                    lineItem = '{0:10} \t: {1} {1} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
+                    FullList += lineItem
+                    listIndex += 1
                     #print(detailMember.user.username)
                     #print(detailMember.status)
-
-                # hiding this temporarily re-indent the lineItem/FullList
-                #if(memberTimeObject < targetTime):
-                lineItem = '{0:10} \t: {1} {1} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
-                FullList += lineItem
-                listIndex += 1
-                del detailMember
-            
+                    
             bot.send_message(m.chat.id, FullList)
 
     else:
