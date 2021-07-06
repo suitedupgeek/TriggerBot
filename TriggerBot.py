@@ -537,7 +537,7 @@ def activityLog(m):
                 #if detailMember.status is not None:
                 # TODO need to actually make this happen rather than just ignoring them.
                     
-                if (behaviour = 0):
+                if (behaviour == 0):
                     if detailMember.status is not 'left' or not 'kicked':
                             if (detailMember.user.last_name == None):
                                 detailMember.user.last_name = " "
