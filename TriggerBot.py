@@ -504,6 +504,13 @@ def activityLog(m):
             
             for member in act:
                 memberTime = act.values()
+                print('Original Time:')
+                print(memberTime)
+                memberTime = memberTime + timedelta(hours=9)
+                print('Time + 9')
+                print(memberTime)
+
+
                 lineItem = '{0:10} \t: {1} \n'.format(memberTime[listIndex], member)
                 FullList += lineItem
                 listIndex += 1
