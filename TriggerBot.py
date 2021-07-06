@@ -537,16 +537,22 @@ def activityLog(m):
                 #if detailMember.status is not None:
                 # TODO need to actually make this happen rather than just ignoring them.
                     
-                if detailMember.status is not 'left' or not 'kicked':
-                    # hiding this temporarily re-indent the lineItem/FullList
-                    #if(memberTimeObject < targetTime):
-                    if (detailMember.user.last_name == None):
-                        detailMember.user.last_name = " "
-                    lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
-                    FullList += lineItem
-                    listIndex += 1
-                    #print(detailMember.user.username)
-                    #print(detailMember.status)
+                if (behaviour = 0):
+                    if detailMember.status is not 'left' or not 'kicked':
+                            if (detailMember.user.last_name == None):
+                                detailMember.user.last_name = " "
+                            lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
+                            FullList += lineItem
+                            listIndex += 1
+                elif (behaviour > 0):
+                    if detailMember.status is not 'left' or not 'kicked':
+                        if (memberTimeObject < targetTime):
+                                if (detailMember.user.last_name == None):
+                                    detailMember.user.last_name = " "
+                                lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
+                                FullList += lineItem
+                                listIndex += 1
+
             bot.send_message(m.chat.id, FullList)
 
     else:
