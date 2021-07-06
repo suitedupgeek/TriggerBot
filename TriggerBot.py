@@ -531,7 +531,8 @@ def activityLog(m):
             for member in act:
                 memberTime = act.values()
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
-
+                
+                friendlytime = ""
                 if memberTimeObject > recently:
                     friendlyTime = "Seen Recently"
                 elif memberTimeObject < twodays:
