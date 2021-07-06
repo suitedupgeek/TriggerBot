@@ -522,7 +522,7 @@ def activityLog(m):
                 # Remove users from activity.json if status is 'left' or 'kicked' 
                 #if detailMember.status is not None:
                     
-                if detailMember.status is not 'left':
+                if detailMember.status is not 'left' or not 'kicked':
                     # hiding this temporarily re-indent the lineItem/FullList
                     #if(memberTimeObject < targetTime):
                     lineItem = '{0:10} \t: {1} {2} \n'.format(memberTime[listIndex], detailMember.user.first_name, detailMember.user.last_name)
