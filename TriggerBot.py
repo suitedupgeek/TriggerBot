@@ -561,13 +561,6 @@ def activityLog(m):
                 FullList = 'Users not active in last {} days: \n\n'.format(str(behaviour))
                 targetTime = datetime.now() - timedelta(days=behaviour)
             
-            recently = datetime.now() - timedelta(days=1)
-            twodays = datetime.now() - timedelta(days=2)
-            threedays = datetime.now() - timedelta(days=3)
-            fourdays = datetime.now() - timedelta(days=4)
-            morethan = datetime.now() - timedelta(days=5)
-            ages = datetime.now() - timedelta(days=6)
-            
             for member in act:
                 memberTime = act.values()
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
