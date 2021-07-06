@@ -519,7 +519,7 @@ def activityLog(m):
                     print('User not found: ' + member + 'setting status to left')
                 
                 # Remove users from activity.json if status is 'left' or 'kicked' 
-                if detailMember.status is not None:
+                #if detailMember.status is not None:
                     
 
 
