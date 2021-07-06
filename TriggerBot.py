@@ -517,13 +517,11 @@ def activityLog(m):
             else:
                 FullList = 'Users not active in last {} days: \n\n'.format(str(behaviour))
                 targetTime = datetime.now() - timedelta(days=behaviour)
-                print('Specify number of days, target time is:')
-                print(targetTime)
             
             for member in act:
                 memberTime = act.values()
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M')
-                print memberTimeObject
+                print memberTimeObject[listIndex]
                 try:
                     # Get user detail - if it still exists in the room move on.
                     detailMember = bot.get_chat_member(m.chat.id,member)
