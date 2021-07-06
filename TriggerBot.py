@@ -508,7 +508,7 @@ def activityLog(m):
                 print('Original Time:')
                 print(memberTime[listIndex])
                 #memberTimeObject = memberTime[listIndex] + timedelta(hours=9)
-                memberTimeObject = datetime.strptime(memberTime[listIndex], ''%y/%m/%d %H:%M:%S'')
+                memberTimeObject = datetime.strptime(memberTime[listIndex], '%y/%m/%d %H:%M:%S')
                 print('Time Object')
                 print(memberTimeObject)
 
