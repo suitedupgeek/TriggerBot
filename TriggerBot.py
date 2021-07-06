@@ -163,7 +163,7 @@ def listener2(messages):
         else:
             message_text = m.content_type
         
-        time = datetime.datetime.now()
+        time = datetime.now()
         print('{}:{}[{}]:{}'.format(time.strftime("%Y-%m-%d %H:%M:%S"),name, cid, message_text))
 
         if(get_activity(m.chat.id)):
