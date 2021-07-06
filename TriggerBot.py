@@ -158,19 +158,19 @@ def listener2(messages):
             rand_count = 0
         cid = m.chat.id
         name = m.from_user.first_name.encode('ascii', 'ignore').decode('ascii')
-        mid = m.from_user.id 
+        mid = m.from_user.username
         if(m.content_type == 'text'):
             message_text = m.text.encode('ascii', 'ignore').decode('ascii')
         else:
             message_text = m.content_type
         
         time = datetime.now()
-        print('{}:{}:{}:[{}]:{}'.format(time.strftime("%Y-%m-%d %H:%M:%S"),name, mid, cid, message_text))
+        print('{}:{}:{}:[{}]:{}'.format(time.strftime("%Y-%m-%d %H:%M:%S"),name, username, cid, message_text))
 
         if(get_activity(m.chat.id)):
-            get_activity(m.chat.id)[mid] = time.strftime("%Y-%m-%d %H:%M")
+            get_activity(m.chat.id)[username] = time.strftime("%Y-%m-%d %H:%M")
         else:
-            activity[str(m.chat.id)] = {mid: time.strftime("%Y-%m-%d %H:%M")}
+            activity[str(m.chat.id)] = {username: time.strftime("%Y-%m-%d %H:%M")}
         
         save_activity()
 
