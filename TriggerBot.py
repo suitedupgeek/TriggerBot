@@ -374,7 +374,8 @@ def add(m):
         else:
             triggers[str(m.chat.id)] = {trigger_word: trigger_response}
         msg = u'' + trigger_created_message.format(trigger_word)
-        bot.reply_to(m, msg)
+        #bot.reply_to(m, msg)
+        bot.send_message(m.chat.id, msg)
         save_triggers()
     # Ignore private messages.
     else:
