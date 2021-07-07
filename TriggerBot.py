@@ -544,6 +544,7 @@ def ping(m):
 def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
+        print(tuple(act.items()))
         print(type(act))
     if (len(m.text) > 12):
         bot.send_message(m.chat.id, 'Stupid human. You can use this command with either "/activity" which will show activity for everyone, or "/activity X" where X is the number of days you want to filter on.')
