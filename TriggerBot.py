@@ -287,9 +287,7 @@ _About this bot._
 '''
 
 trigger_created_message = '''
-New Trigger Created:
-Trigger [{}]
-Response [{}]
+New Trigger Created! {}
 '''
 
 global_trigger_created_message = '''
@@ -375,7 +373,7 @@ def add(m):
             get_triggers(m.chat.id)[trigger_word] = trigger_response
         else:
             triggers[str(m.chat.id)] = {trigger_word: trigger_response}
-        msg = u'' + trigger_created_message.format(trigger_word, trigger_response)
+        msg = u'' + trigger_created_message.format(trigger_word)
         bot.reply_to(m, msg)
         save_triggers()
     # Ignore private messages.
@@ -558,7 +556,6 @@ def activityLog(m):
         if(len(actSorted) == 0):
             bot.send_message(m.chat.id, 'This group doesn\'t have any activity')
         else:
-            
             listIndex = 0
             if (behaviour == 0):
                 FullList = "Activity for all users: \n\n"
@@ -583,7 +580,6 @@ def activityLog(m):
                 # Remove users from activity.json if status is 'left' or 'kicked' 
                 # TODO need to actually make this happen rather than just ignoring them.
 
-
                 if (behaviour == 0):
                     if detailMember.status in ("member","creator","administrator"):
                             if (detailMember.user.last_name == None):
@@ -598,9 +594,7 @@ def activityLog(m):
                                 lineItem = '{0:10} \t: {1} {2}\n'.format(prettyDate, detailMember.user.first_name, detailMember.user.last_name)
                                 FullList += lineItem
                 listIndex += 1
-
             bot.send_message(m.chat.id, FullList)
-
     else:
         bot.send_message(m.chat.id, 'This group doesn\'t have activity.')
 
