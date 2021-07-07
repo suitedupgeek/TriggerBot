@@ -570,8 +570,8 @@ def activityLog(m):
                 FullList = 'Users not active in last {} days: \n\n'.format(str(behaviour))
                 targetTime = datetime.now() - timedelta(days=behaviour)
             
-            for members in actSorted:
-                memberTime = members[1]
+            for member in actSorted:
+                memberTime = member[1]
                 memberTimeObject = datetime.strptime(memberTime, '%Y-%m-%d %H:%M:%S')
                 prettyDate = pretty_date(memberTimeObject)
                 try:
@@ -581,7 +581,7 @@ def activityLog(m):
                 except:
                     # User not found in the room, set status to left
                     detailMember.status = 'left'
-                    print('User not found: ' + member + 'setting status to left')
+                    print('User not found: ' + member[0] + 'setting status to left')
                 
                 # Remove users from activity.json if status is 'left' or 'kicked' 
                 # TODO need to actually make this happen rather than just ignoring them.
