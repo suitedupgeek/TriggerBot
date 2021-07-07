@@ -216,7 +216,7 @@ def listener2(messages):
             activity[str(m.chat.id)] = {mid: time.strftime("%Y-%m-%d %H:%M:%S")}
         
         # Check if user has used /activity, trying to avoid duplicates
-        match = re.search(r'\W*((?i)activity(?-i))\W*',m.text)
+        match = re.search('\W*((?i)activity(?-i))\W*',m.text)
         if match:
             print('Activity query, not saving activity')
         else: 
