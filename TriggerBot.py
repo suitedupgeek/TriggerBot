@@ -217,7 +217,7 @@ def listener2(messages):
         
         # Check if user has used /activity, trying to avoid duplicates
         regexp2 = re.compile('\W*((?i)activity(?-i))\W*', re.IGNORECASE)
-        match = regexp2.search(m.text))
+        match = regexp2.search(m.text)
         if match:
             print('Activity query, not saving activity')
         else: 
