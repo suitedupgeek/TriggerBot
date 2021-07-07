@@ -574,6 +574,10 @@ def activityLog(m):
                 print(members)
                 print('\n')
                 print(type(members))
+                print('output')
+                output = [x[1] for x in members]
+                print(output)
+                
                 for value in members:
                     print('Member Time \n')
                     print(value[1])
