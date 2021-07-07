@@ -570,9 +570,10 @@ def activityLog(m):
                 targetTime = datetime.now() - timedelta(days=behaviour)
             
             for members in actSorted:
-                print('Member \n')
+                print('Member and type\n')
                 print(members)
                 print('\n')
+                print(type(members))
                 for value in members:
                     print('Member Time \n')
                     print(value[1])
