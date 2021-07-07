@@ -571,48 +571,35 @@ def activityLog(m):
                 targetTime = datetime.now() - timedelta(days=behaviour)
             
             for members in actSorted:
-                print('Member and type\n')
-                print(members)
-                print('\n')
-                print(type(members))
-                second_element = members[1]
-                print('second element')
-                print(second_element)
+                memberTime = members[1]
+                memberTimeObject = datetime.strptime(memberTime, '%Y-%m-%d %H:%M:%S')
+                prettyDate = pretty_date(memberTimeObject)
+                try:
+                    # Get user detail - if it still exists in the room move on.
+                    detailMember = bot.get_chat_member(m.chat.id,member)
+                    #print(detailMember)
+                except:
+                    # User not found in the room, set status to left
+                    detailMember.status = 'left'
+                    print('User not found: ' + member + 'setting status to left')
                 
-                for value in members:
-                    print('Member Time \n')
-                    print(value.values())
-                    print('\n')
-
-                    memberTime = value
-                    memberTimeObject = datetime.strptime(memberTime, '%Y-%m-%d %H:%M:%S')
-                    prettyDate = pretty_date(memberTimeObject)
-                    try:
-                        # Get user detail - if it still exists in the room move on.
-                        detailMember = bot.get_chat_member(m.chat.id,member)
-                        #print(detailMember)
-                    except:
-                        # User not found in the room, set status to left
-                        detailMember.status = 'left'
-                        print('User not found: ' + member + 'setting status to left')
-                    
-                    # Remove users from activity.json if status is 'left' or 'kicked' 
-                    # TODO need to actually make this happen rather than just ignoring them.
+                # Remove users from activity.json if status is 'left' or 'kicked' 
+                # TODO need to actually make this happen rather than just ignoring them.
 
 
-                    if (behaviour == 0):
-                        #if detailMember.status in ("member","creator","administrator"):
+                if (behaviour == 0):
+                    #if detailMember.status in ("member","creator","administrator"):
+                            if (detailMember.user.last_name == None):
+                                detailMember.user.last_name = " "
+                            lineItem = '{0:10} \t: {1} {2}\n'.format(prettyDate, detailMember.user.first_name, detailMember.user.last_name)
+                            FullList += lineItem
+                elif (behaviour > 0):
+                    #if detailMember.status in ("member","creator","administrator"):
+                        if (memberTimeObject < targetTime):
                                 if (detailMember.user.last_name == None):
                                     detailMember.user.last_name = " "
                                 lineItem = '{0:10} \t: {1} {2}\n'.format(prettyDate, detailMember.user.first_name, detailMember.user.last_name)
                                 FullList += lineItem
-                    elif (behaviour > 0):
-                        #if detailMember.status in ("member","creator","administrator"):
-                            if (memberTimeObject < targetTime):
-                                    if (detailMember.user.last_name == None):
-                                        detailMember.user.last_name = " "
-                                    lineItem = '{0:10} \t: {1} {2}\n'.format(prettyDate, detailMember.user.first_name, detailMember.user.last_name)
-                                    FullList += lineItem
                 listIndex += 1
 
             bot.send_message(m.chat.id, FullList)
