@@ -287,7 +287,7 @@ _About this bot._
 '''
 
 trigger_created_message = '''
-New Trigger Created! {}
+New Trigger Created! [ {} ]
 '''
 
 global_trigger_created_message = '''
