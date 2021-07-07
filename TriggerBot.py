@@ -580,7 +580,7 @@ def activityLog(m):
                 
                 for value in members:
                     print('Member Time \n')
-                    print(value[1])
+                    print(value.values())
                     print('\n')
 
                     memberTime = value
