@@ -215,7 +215,13 @@ def listener2(messages):
         else:
             activity[str(m.chat.id)] = {mid: time.strftime("%Y-%m-%d %H:%M:%S")}
         
-        save_activity()
+        # Check if user has used /activity, trying to avoid duplicates
+        match = re.search(r'\W*((?i)activity(?-i))\W*',m.text)
+        if match:
+            print('Activity query, not saving activity')
+        else: 
+            print('Non activity query, saving activity')
+            save_activity()
 
         rand_count = rand_count + 1
 
@@ -575,6 +581,8 @@ def activityLog(m):
                 
                 # Remove users from activity.json if status is 'left' or 'kicked' 
                 # TODO need to actually make this happen rather than just ignoring them.
+
+
                 if (behaviour == 0):
                     if detailMember.status in ("member","creator","administrator"):
                             if (detailMember.user.last_name == None):
