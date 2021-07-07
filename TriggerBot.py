@@ -545,7 +545,7 @@ def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
         actTuple = tuple(act.items())
-        actSorted = sorted(actTuple)
+        actSorted = sorted(actTuple, reverse=True)
         print(type(actSorted))
         print(actSorted)
     if (len(m.text) > 12):
