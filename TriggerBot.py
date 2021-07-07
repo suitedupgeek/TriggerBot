@@ -546,6 +546,7 @@ def activityLog(m):
         act = get_activity(m.chat.id)
         actTuple = tuple(act.items())
         actSorted = sorted(actTuple, key=lambda x: x[1])
+        print('Just sorted')
         print(type(actSorted))
         print(actSorted)
     if (len(m.text) > 12):
