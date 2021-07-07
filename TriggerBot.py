@@ -221,7 +221,6 @@ def listener2(messages):
         if match:
             print('Activity query, not saving activity')
         else: 
-            print('Non activity query, saving activity')
             save_activity()
 
         rand_count = rand_count + 1
