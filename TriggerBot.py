@@ -544,7 +544,7 @@ def ping(m):
 def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
-        actTuple = tuple(act.items()))
+        actTuple = tuple(act.items())
         actSorted = sorted(actTuple)
         print(type(actSorted))
     if (len(m.text) > 12):
