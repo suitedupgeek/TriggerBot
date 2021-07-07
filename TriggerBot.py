@@ -572,9 +572,12 @@ def activityLog(m):
             for member in actSorted:
                 print(member)
                 for value in member:
+                    print('Member Time \n')
                     print(value)
+                    print('\n')
+
                     memberTime = value
-                    memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M:%S')
+                    memberTimeObject = datetime.strptime(memberTime, '%Y-%m-%d %H:%M:%S')
                     prettyDate = pretty_date(memberTimeObject)
                     try:
                         # Get user detail - if it still exists in the room move on.
