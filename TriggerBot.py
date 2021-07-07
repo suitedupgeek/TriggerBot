@@ -204,6 +204,9 @@ def listener2(messages):
         mid = m.from_user.id
         if(m.content_type == 'text'):
             message_text = m.text.encode('ascii', 'ignore').decode('ascii')
+            # Check if user has used /activity, trying to avoid duplicates
+            regexp2 = re.compile('\/activity', re.IGNORECASE)
+            match = regexp2.search(m.text)
         else:
             message_text = m.content_type
         
@@ -215,9 +218,6 @@ def listener2(messages):
         else:
             activity[str(m.chat.id)] = {mid: time.strftime("%Y-%m-%d %H:%M:%S")}
         
-        # Check if user has used /activity, trying to avoid duplicates
-        regexp2 = re.compile('\/activity', re.IGNORECASE)
-        match = regexp2.search(m.text)
         if match:
             print('Activity query, not saving activity')
         else: 
