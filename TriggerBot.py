@@ -216,7 +216,7 @@ def listener2(messages):
         if(get_activity(m.chat.id)):
             get_activity(m.chat.id)[mid] = time.strftime("%Y-%m-%d %H:%M:%S")
         else:
-            activity[str(m.chat.id)] = {mid: time.strftime("%Y-%m-%d %H:%M:%S")}
+            activity[m.chat.id] = {mid: time.strftime("%Y-%m-%d %H:%M:%S")}
         
         if(m.content_type == 'text'):
             if match:
