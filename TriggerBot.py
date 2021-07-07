@@ -545,10 +545,7 @@ def activityLog(m):
     if(m.chat.type in ['group', 'supergroup']):
         act = get_activity(m.chat.id)
         actTuple = tuple(act.items())
-        actSorted = sorted(actTuple, key=lambda x: x[1])
-        print('Just sorted')
-        print(type(actSorted))
-        print(actSorted)
+        actSorted = sorted(actTuple, key=lambda x: x[1], reverse=True)
     if (len(m.text) > 12):
         bot.send_message(m.chat.id, 'Stupid human. You can use this command with either "/activity" which will show activity for everyone, or "/activity X" where X is the number of days you want to filter on.')
     elif (len(m.text.split(" ",1)) == 1):
@@ -588,13 +585,13 @@ def activityLog(m):
 
 
                 if (behaviour == 0):
-                    #if detailMember.status in ("member","creator","administrator"):
+                    if detailMember.status in ("member","creator","administrator"):
                             if (detailMember.user.last_name == None):
                                 detailMember.user.last_name = " "
                             lineItem = '{0:10} \t: {1} {2}\n'.format(prettyDate, detailMember.user.first_name, detailMember.user.last_name)
                             FullList += lineItem
                 elif (behaviour > 0):
-                    #if detailMember.status in ("member","creator","administrator"):
+                    if detailMember.status in ("member","creator","administrator"):
                         if (memberTimeObject < targetTime):
                                 if (detailMember.user.last_name == None):
                                     detailMember.user.last_name = " "
