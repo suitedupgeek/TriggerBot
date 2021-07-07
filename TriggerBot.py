@@ -557,7 +557,7 @@ def activityLog(m):
     
     if(actSorted and isinstance(behaviour, int)):
 
-        if(len(actSorted.keys()) == 0):
+        if(len(actSorted) == 0):
             bot.send_message(m.chat.id, 'This group doesn\'t have any activity')
         else:
             
