@@ -564,11 +564,10 @@ def activityLog(m):
                 memberTime = act.values()
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M:%S')
                 prettyDate = pretty_date(memberTimeObject)
-
                 try:
                     # Get user detail - if it still exists in the room move on.
                     detailMember = bot.get_chat_member(m.chat.id,member)
-                    #print(detailMember)
+                    print(detailMember)
                 except:
                     # User not found in the room, set status to left
                     detailMember.status = 'left'
