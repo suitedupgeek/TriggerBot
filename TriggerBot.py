@@ -567,7 +567,7 @@ def activityLog(m):
                 try:
                     # Get user detail - if it still exists in the room move on.
                     detailMember = bot.get_chat_member(m.chat.id,member)
-                    print(detailMember)
+                    #print(detailMember)
                 except:
                     # User not found in the room, set status to left
                     detailMember.status = 'left'
@@ -576,13 +576,13 @@ def activityLog(m):
                 # Remove users from activity.json if status is 'left' or 'kicked' 
                 # TODO need to actually make this happen rather than just ignoring them.
                 if (behaviour == 0):
-                    #if detailMember.status in ("member","creator","administrator"):
+                    if detailMember.status in ("member","creator","administrator"):
                             if (detailMember.user.last_name == None):
                                 detailMember.user.last_name = " "
                             lineItem = '{0:10} \t: {1} {2}\n'.format(prettyDate, detailMember.user.first_name, detailMember.user.last_name)
                             FullList += lineItem
                 elif (behaviour > 0):
-                    #if detailMember.status in ("member","creator","administrator"):
+                    if detailMember.status in ("member","creator","administrator"):
                         if (memberTimeObject < targetTime):
                                 if (detailMember.user.last_name == None):
                                     detailMember.user.last_name = " "
