@@ -214,7 +214,7 @@ def listener2(messages):
         print('{}:{}:{}:[{}]:{}'.format(time.strftime("%Y-%m-%d %H:%M:%S"),name, mid, cid, message_text))
 
         if(get_activity(m.chat.id)):
-            get_activity(str(m.chat.id))[mid] = time.strftime("%Y-%m-%d %H:%M:%S")
+            get_activity(m.chat.id)[mid] = time.strftime("%Y-%m-%d %H:%M:%S")
         else:
             activity[str(m.chat.id)] = {mid: time.strftime("%Y-%m-%d %H:%M:%S")}
         
@@ -224,7 +224,7 @@ def listener2(messages):
             else: 
                 save_activity()
         else:
-            save_activity()
+            save_activity
 
         rand_count = rand_count + 1
 
