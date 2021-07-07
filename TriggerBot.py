@@ -218,9 +218,12 @@ def listener2(messages):
         else:
             activity[str(m.chat.id)] = {mid: time.strftime("%Y-%m-%d %H:%M:%S")}
         
-        if match:
-            print('Activity query, not saving activity')
-        else: 
+        if(m.content_type == 'text'):
+            if match:
+                print('Activity query, not saving activity')
+            else: 
+                save_activity()
+        else:
             save_activity()
 
         rand_count = rand_count + 1
