@@ -555,9 +555,9 @@ def activityLog(m):
     else:
         behaviour = int(m.text.split(" ",1)[1])
     
-    if(act and isinstance(behaviour, int)):
+    if(actSorted and isinstance(behaviour, int)):
 
-        if(len(act.keys()) == 0):
+        if(len(actSorted.keys()) == 0):
             bot.send_message(m.chat.id, 'This group doesn\'t have any activity')
         else:
             
@@ -569,8 +569,8 @@ def activityLog(m):
                 FullList = 'Users not active in last {} days: \n\n'.format(str(behaviour))
                 targetTime = datetime.now() - timedelta(days=behaviour)
             
-            for member in act:
-                memberTime = act.values()
+            for member in actSorted:
+                memberTime = actSorted.values()
                 memberTimeObject = datetime.strptime(memberTime[listIndex], '%Y-%m-%d %H:%M:%S')
                 prettyDate = pretty_date(memberTimeObject)
                 try:
